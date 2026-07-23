@@ -6,7 +6,7 @@ import plotly.express as px
 
 # Upload files
 uploaded_files = st.file_uploader(
-    "Upload your Spotify Streaming History JSON files",
+    'Upload your Spotify Streaming History JSON files — your data is not stored',
     type='json',
     accept_multiple_files=True
 )
@@ -88,7 +88,9 @@ platforms = ['All'] + sorted(df['platform'].unique().tolist())
 selected_platform = st.sidebar.selectbox('Platform', platforms)
 selected_shuffle = st.sidebar.selectbox('Shuffle', ['All', 'Shuffle On', 'Shuffle Off'])
 selected_offline = st.sidebar.selectbox('Offline', ['All', 'Offline Only', 'Online Only'])
-st.sidebar.markdown("Built by [Derek Mahoney](https://github.com/derekmahoney2)")
+st.sidebar.markdown('---')
+st.sidebar.markdown('Built by [Derek Mahoney](https://github.com/derekmahoney2)')
+st.sidebar.caption('Your data is processed in your browser session and is not stored or shared. Upload at your own discretion.')
 
 # Apply filters
 filtered_df = df.copy()
