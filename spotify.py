@@ -4,6 +4,7 @@ import streamlit as st
 import calendar
 import plotly.express as px
 
+st.set_page_config(layout='wide')
 # Upload files
 uploaded_files = st.file_uploader(
     'Upload your Spotify Streaming History JSON files — your data is not stored',
