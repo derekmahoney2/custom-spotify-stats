@@ -1,26 +1,23 @@
-import os
-import glob
 import json
 import pandas as pd
 import streamlit as st
 import calendar
 import plotly.express as px
 
-# To run type streamlit run yourfilename.py
+# Upload files
+uploaded_files = st.file_uploader(
+    "Upload your Spotify Streaming History JSON files",
+    type='json',
+    accept_multiple_files=True
+)
 
-script_dir = os.path.dirname(os.path.abspath(__file__))  # Find the directory of the script
-# Folder with data must be named 'Spotify Extended Streaming History'
-data_path = os.path.join(script_dir, 'Spotify Extended Streaming History')  #Joins folder path and filename
+if not uploaded_files:
+    st.info("Download your extended streaming history from Spotify (Account → Privacy Settings), then upload all Streaming_History_Audio_*.json files above.")
+    st.stop()
 
-# Looks for the audio files in the folder and puts them in order
-# Audio files should be named 'Streaming_History_Audio_*.json'
-files = sorted(glob.glob(os.path.join(data_path, 'Streaming_History_Audio_*.json')))
 all_records = []
-
-# Opens each file and adds to list
-for filepath in files:
-    with open(filepath) as f:
-        data = json.load(f)
+for f in uploaded_files:
+    data = json.load(f)
     all_records.extend(data)
 
 #################### Data Cleaning and Sorting ####################
