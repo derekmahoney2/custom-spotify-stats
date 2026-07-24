@@ -1,5 +1,13 @@
 [theme]
-backgroundColor = "#191414"
-secondaryBackgroundColor = "#1DB954"
-textColor = "#FFFFFF"
-primaryColor = "#1ED760"
+backgroundColor = '#191414'
+secondaryBackgroundColor = '#1DB954'
+textColor = '#FFFFFF'
+borderColor = '#1ED760'
+primaryColor = '#1ED760'
+showWidgetBorder = false
+dataframeHeaderBackgroundColor = '#1DB954'
+
+[theme.sidebar]
+backgroundColor = '#314030'
+secondaryBackgroundColor = '#191414'
+showWidgetBorder = true
