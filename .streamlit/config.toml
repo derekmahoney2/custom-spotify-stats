@@ -5,9 +5,9 @@ textColor = '#FFFFFF'
 borderColor = '#1ED760'
 primaryColor = '#1ED760'
 showWidgetBorder = false
-dataframeHeaderBackgroundColor = '#1DB954'
+dataframeHeaderBackgroundColor = '#153613'
 
 [theme.sidebar]
-backgroundColor = '#314030'
+backgroundColor = '#404040'
 secondaryBackgroundColor = '#191414'
 showWidgetBorder = true
