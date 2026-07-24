@@ -184,14 +184,15 @@ tab1, tab2, tab3, tab4 = st.tabs(
 with tab1:
     st.subheader('Top 10 Artists')
     st.dataframe(
-        f"{top_artist_streams:,}", column_config={
+        top_artist_streams, column_config={
             'artist': 'Artist',
-            'count': 'Streams'
+            'count': 'Streams',
+            format="%d"
         })
     st.divider()
     st.subheader('Top Artist by Month')
     fig = px.bar(
-        f"{top_artist_by_month:,}",
+        top_artist_by_month,
         x='month',
         y='count',
         color='artist',
@@ -203,14 +204,15 @@ with tab1:
 with tab2:
     st.subheader('Top 10 Songs')
     st.dataframe(
-        f"{top_songs:,}", column_config={
+        top_songs, column_config={
             'track_artist': 'Track',
-            'count': 'Streams'
+            'count': 'Streams',
+            format="%d"
         })
     st.divider()
     st.subheader('Top Song by Month')
     fig = px.bar(
-        f"{top_song_by_month:,}",
+        top_song_by_month,
         x='month',
         y='count',
         color='track_artist',
@@ -221,20 +223,22 @@ with tab2:
     st.divider()
     st.subheader('Top Albums')
     st.dataframe(
-        f"{top_albums:,}", column_config={
+        top_albums, column_config={
             'album_artist': 'Album',
-            'count': 'Streams by Album'
+            'count': 'Streams by Album',
+            format="%d"
         })
     st.divider()
 with tab3:
     st.subheader('Top 10 Hours')
     st.dataframe(
-        f"{top_hours:,}", column_config={
-        'ms': 'Minutes Streamed'
+        top_hours, column_config={
+            'ms': 'Minutes Streamed',
+            format="%d"
     })
     st.divider()
     st.subheader('Listening Habits by Hour')
-    st.bar_chart(f"{listening_by_hour:,}", x_label='Hour', y_label='Minutes', color=(0,255,0))
+    st.bar_chart(listening_by_hour, x_label='Hour', y_label='Minutes', color=(0,255,0))
     st.divider()
     st.subheader('Streaming by Platform')
     fig = px.pie(
@@ -248,15 +252,17 @@ with tab3:
 with tab4:
     st.subheader('Most Skipped Artists')
     st.dataframe(
-        f"{skipped_artists:,}", column_config={
+        skipped_artists, column_config={
             'artist': 'Artist',
-            'count': 'Skips'
+            'count': 'Skips',
+            format="%d"
         })
     st.divider()
     st.subheader('Most Skipped Songs')
     st.dataframe(
-        f"{skipped_songs:,}", column_config={
+        skipped_songs, column_config={
             'track_artist': 'Song',
-            'count': 'Skips'
+            'count': 'Skips',
+            format="%d"
         })
     st.divider()
