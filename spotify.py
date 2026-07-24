@@ -5,6 +5,7 @@ import calendar
 import plotly.express as px
 
 st.set_page_config(page_title='Spotify Listening Stats', page_icon='🎸', layout='wide')
+st.title('My Spotify Stats 🎵')
 # Upload files
 uploaded_files = st.file_uploader(
     'Upload your Spotify Streaming History JSON files — your data is not stored',
@@ -167,11 +168,10 @@ platform_counts = filtered_df['platform'].value_counts()
 
 #################### Streamlit ####################
 
-st.title('My Spotify Stats 🎵')
-
 col1, col2, col3 = st.columns(3)
 with col1:
-    st.metric('Total Minutes Listened', total_minutes, border=True)
+    st.metric('Total Minutes Listened', f"{total_minutes:,}", border=True)
+    st.caption(f"({total_minutes // 60:,} hours)")
 with col2:
     st.metric('Total Streams', len(filtered_df), border=True)
 with col3:
