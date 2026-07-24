@@ -170,12 +170,11 @@ platform_counts = filtered_df['platform'].value_counts()
 
 col1, col2, col3 = st.columns(3)
 with col1:
-    st.metric('Total Minutes Listened', f"{total_minutes:,}", border=True)
-    st.caption(f"({total_minutes // 60:,} hours)")
+    st.metric('Total Minutes Listened', f"{total_minutes:,}", help=f"{total_minutes // 60:,} hours", border=True)
 with col2:
-    st.metric('Total Streams', len(filtered_df), border=True)
+    st.metric('Total Streams', f"{len(filtered_df):,}", border=True)
 with col3:
-    st.metric('Unique Artists', unique_artists, border=True)
+    st.metric('Unique Artists', f"{unique_artists:,}", border=True)
 
 
 tab1, tab2, tab3, tab4 = st.tabs(
@@ -185,14 +184,14 @@ tab1, tab2, tab3, tab4 = st.tabs(
 with tab1:
     st.subheader('Top 10 Artists')
     st.dataframe(
-        top_artist_streams, column_config={
+        f"{top_artist_streams:,}", column_config={
             'artist': 'Artist',
             'count': 'Streams'
         })
     st.divider()
     st.subheader('Top Artist by Month')
     fig = px.bar(
-        top_artist_by_month,
+        f"{top_artist_by_month:,}",
         x='month',
         y='count',
         color='artist',
@@ -204,14 +203,14 @@ with tab1:
 with tab2:
     st.subheader('Top 10 Songs')
     st.dataframe(
-        top_songs, column_config={
+        f"{top_songs:,}", column_config={
             'track_artist': 'Track',
             'count': 'Streams'
         })
     st.divider()
     st.subheader('Top Song by Month')
     fig = px.bar(
-        top_song_by_month,
+        f"{top_song_by_month:,}",
         x='month',
         y='count',
         color='track_artist',
@@ -222,7 +221,7 @@ with tab2:
     st.divider()
     st.subheader('Top Albums')
     st.dataframe(
-        top_albums, column_config={
+        f"{top_albums:,}", column_config={
             'album_artist': 'Album',
             'count': 'Streams by Album'
         })
@@ -230,12 +229,12 @@ with tab2:
 with tab3:
     st.subheader('Top 10 Hours')
     st.dataframe(
-        top_hours, column_config={
+        f"{top_hours:,}", column_config={
         'ms': 'Minutes Streamed'
     })
     st.divider()
     st.subheader('Listening Habits by Hour')
-    st.bar_chart(listening_by_hour, x_label='Hour', y_label='Minutes', color=(0,255,0))
+    st.bar_chart(f"{listening_by_hour:,}", x_label='Hour', y_label='Minutes', color=(0,255,0))
     st.divider()
     st.subheader('Streaming by Platform')
     fig = px.pie(
@@ -249,14 +248,14 @@ with tab3:
 with tab4:
     st.subheader('Most Skipped Artists')
     st.dataframe(
-        skipped_artists, column_config={
+        f"{skipped_artists:,}", column_config={
             'artist': 'Artist',
             'count': 'Skips'
         })
     st.divider()
     st.subheader('Most Skipped Songs')
     st.dataframe(
-        skipped_songs, column_config={
+        f"{skipped_songs:,}", column_config={
             'track_artist': 'Song',
             'count': 'Skips'
         })
