@@ -4,7 +4,7 @@ import streamlit as st
 import calendar
 import plotly.express as px
 
-st.set_page_config(layout='wide')
+st.set_page_config(page_title='Spotify Listening Stats', page_icon='🎸', layout='wide')
 # Upload files
 uploaded_files = st.file_uploader(
     'Upload your Spotify Streaming History JSON files — your data is not stored',
@@ -185,7 +185,7 @@ tab1, tab2, tab3, tab4 = st.tabs(
 with tab1:
     st.subheader('Top 10 Artists')
     st.dataframe(
-        top_artist_streams, column_config={
+        top_artist_streams, zebra_stripe=True, column_config={
             'artist': 'Artist',
             'count': 'Streams'
         })
@@ -204,7 +204,7 @@ with tab1:
 with tab2:
     st.subheader('Top 10 Songs')
     st.dataframe(
-        top_songs, column_config={
+        top_songs, zebra_stripe=True, column_config={
             'track_artist': 'Track',
             'count': 'Streams'
         })
@@ -222,7 +222,7 @@ with tab2:
     st.divider()
     st.subheader('Top Albums')
     st.dataframe(
-        top_albums, column_config={
+        top_albums, zebra_stripe=True, column_config={
             'album_artist': 'Album',
             'count': 'Streams by Album'
         })
@@ -230,7 +230,7 @@ with tab2:
 with tab3:
     st.subheader('Top 10 Hours')
     st.dataframe(
-        top_hours, column_config={
+        top_hours, zebra_stripe=True, column_config={
         'ms': 'Minutes Streamed'
     })
     st.divider()
@@ -249,14 +249,14 @@ with tab3:
 with tab4:
     st.subheader('Most Skipped Artists')
     st.dataframe(
-        skipped_artists, column_config={
+        skipped_artists, zebra_stripe=True, column_config={
             'artist': 'Artist',
             'count': 'Skips'
         })
     st.divider()
     st.subheader('Most Skipped Songs')
     st.dataframe(
-        skipped_songs, column_config={
+        skipped_songs, zebra_stripe=True, column_config={
             'track_artist': 'Song',
             'count': 'Skips'
         })
