@@ -186,8 +186,7 @@ with tab1:
     st.dataframe(
         top_artist_streams, column_config={
             'artist': 'Artist',
-            'count': 'Streams',
-            format="%d"
+            'count': st.column_config.NumberColumn('Streams', format="%d")
         })
     st.divider()
     st.subheader('Top Artist by Month')
@@ -206,8 +205,7 @@ with tab2:
     st.dataframe(
         top_songs, column_config={
             'track_artist': 'Track',
-            'count': 'Streams',
-            format="%d"
+            'count': st.column_config.NumberColumn('Streams', format="%d")
         })
     st.divider()
     st.subheader('Top Song by Month')
@@ -225,16 +223,14 @@ with tab2:
     st.dataframe(
         top_albums, column_config={
             'album_artist': 'Album',
-            'count': 'Streams by Album',
-            format="%d"
+            'count': st.column_config.NumberColumn('Song Streams', format="%d")
         })
     st.divider()
 with tab3:
     st.subheader('Top 10 Hours')
     st.dataframe(
         top_hours, column_config={
-            'ms': 'Minutes Streamed',
-            format="%d"
+            'ms': st.column_config.NumberColumn('Minutes Streamed', format="%d")
     })
     st.divider()
     st.subheader('Listening Habits by Hour')
@@ -254,15 +250,13 @@ with tab4:
     st.dataframe(
         skipped_artists, column_config={
             'artist': 'Artist',
-            'count': 'Skips',
-            format="%d"
+            'count': st.column_config.NumberColumn('Skips', format="%d")
         })
     st.divider()
     st.subheader('Most Skipped Songs')
     st.dataframe(
         skipped_songs, column_config={
             'track_artist': 'Song',
-            'count': 'Skips',
-            format="%d"
+            'count': st.column_config.NumberColumn('Skips', format="%d")
         })
     st.divider()
